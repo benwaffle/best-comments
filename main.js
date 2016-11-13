@@ -22,9 +22,7 @@ r.getSubreddit(sub).getHot().forEach(post => {
                     // to points (x = child score, y = max parent score)
                     const parentMax = cm.score * 0.4 + 20
                     if (parent instanceof snoowrap.objects.Comment && parent.score <= parentMax) {
-                        r.getSubmission(cm.link_id).permalink.then(link => {
-                            console.log(`https://reddit.com${link}${cm.name.slice(3)}?context=10000`)
-                        })
+                        console.log(`${post.url}${cm.name.slice(3)}?context=10000`)
                     }
                 })
             }
