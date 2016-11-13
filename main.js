@@ -2,6 +2,7 @@
 
 const snoowrap = require('snoowrap')
 const r = new snoowrap(require('./config.js'))
+r.config({continueAfterRatelimitError: true})
 
 const mapComment = cb => cms => {
     cb(cms)
