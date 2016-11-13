@@ -8,7 +8,7 @@ const mapComment = cb => cms => {
     cms.replies.forEach(mapComment(cb))
 }
 
-const sub = process.argv.reverse()[0] // last arg
+const sub = process.argv[2] // node ./main.js <sub>
 r.getSubreddit(sub || 'BlackPeopleTwitter').getHot().forEach(post => {
     post
         .expandReplies({limit: 1, depth: 5})
