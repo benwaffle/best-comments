@@ -17,7 +17,11 @@ r.getSubreddit(sub).getHot().forEach(post => {
         .forEach(mapComment(cm => {
             if (cm.score > 100) {
                 r.getComment(cm.parent_id).fetch().then(parent => {
-                    if (parent instanceof snoowrap.objects.Comment && cm.score >= parent.score*2) {
+                    // max parent score for the child to be interesting
+                    // you can experiment with this formula by fitting a line
+                    // to points (x = child score, y = max parent score)
+                    const parentMax = cm.score * 0.4 + 20
+                    if (parent instanceof snoowrap.objects.Comment && parent.score <= parentMax) {
                         r.getSubmission(cm.link_id).permalink.then(link => {
                             console.log(`https://reddit.com${link}${cm.name.slice(3)}?context=10000`)
                         })
