@@ -1,8 +1,8 @@
-'use strict'
-
 const snoowrap = require('snoowrap')
 const r = new snoowrap(require('./config.js'))
-r.config({continueAfterRatelimitError: true})
+r.config({
+    continueAfterRatelimitError: true
+})
 
 function mapComment(comment, parent, callback) {
     callback(comment, parent)
